@@ -1,0 +1,8 @@
+* Start typescript
+tsc -w
+
+* Start nodemon
+nodemon <NAME_FILE_START>
+
+* Entrar no mongoshel do mongo no docker
+docker exec -it <ID_OR_NAME_CONTAINER> mongo
