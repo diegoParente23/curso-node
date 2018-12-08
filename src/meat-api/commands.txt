@@ -6,3 +6,5 @@ nodemon <NAME_FILE_START>
 
 * Entrar no mongoshel do mongo no docker
 docker exec -it <ID_OR_NAME_CONTAINER> mongo
+
+docker run --name mongodb --network my-rede -d -v "/var/mongo" -P mongo
