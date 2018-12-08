@@ -14,6 +14,12 @@ exports.handleError = (req, resp, error, done) => {
             break;
         case 'ValidationError':
             error.statusCode = 400;
+            const messages = [];
+            for (let name in error.errors)
+                messages.push({ message: error.errors[name].message });
+            error.toJSON = () => ({
+                errors: messages
+            });
             break;
     }
     done();
