@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "3.0.2",
     "i": "0.3.6",
     "mongoose": "4.13.9",
     "npm": "6.4.1",
@@ -17,6 +18,7 @@
     "restify-errors": "5.0.0"
   },
   "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
     "@types/mongoose": "4.7.32",
     "@types/restify": "5.0.6",
     "@types/restify-errors": "4.3.2"
