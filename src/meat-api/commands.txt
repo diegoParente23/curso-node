@@ -7,4 +7,5 @@ nodemon <NAME_FILE_START>
 * Entrar no mongoshel do mongo no docker
 docker exec -it <ID_OR_NAME_CONTAINER> mongo
 
+* Para criar um novo container de mongo já com rede configurada
 docker run --name mongodb --network my-rede -d -v "/var/mongo" -p 27017:27017 mongo
