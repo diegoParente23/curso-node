@@ -9,17 +9,17 @@ const menuSchema = new mongoose.Schema({
     price: {
         type: Number,
         required: true
-    },
-    menu: {
-        type: [],
-        required: false,
-        select: false
     }
 });
 const restSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
+    },
+    menu: {
+        type: [menuSchema],
+        required: false,
+        select: false
     }
 });
 exports.Restaurant = mongoose.model('Restaurants', restSchema);
