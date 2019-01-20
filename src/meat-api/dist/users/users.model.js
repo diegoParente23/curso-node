@@ -63,4 +63,4 @@ const updateMiddleware = function (next) {
 userSchema.pre('save', saveMiddleware);
 userSchema.pre('findOneAndUpdate', updateMiddleware);
 userSchema.pre('update', updateMiddleware);
-exports.User = mongoose.model('User', userSchema);
+exports.User = mongoose.model('Users', userSchema);
