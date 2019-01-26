@@ -49,4 +49,8 @@ export class Server {
             return this.initRoutes(routers).then(() => this);
         });
     };
+
+    shutdown(){
+        return mongoose.disconnect().then(() => this.application.close());
+    }
 }

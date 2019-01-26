@@ -42,5 +42,8 @@ class Server {
         });
     }
     ;
+    shutdown() {
+        return mongoose.disconnect().then(() => this.application.close());
+    }
 }
 exports.Server = Server;
