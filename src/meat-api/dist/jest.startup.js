@@ -7,6 +7,7 @@ const users_router_1 = require("./users/users.router");
 const reviews_router_1 = require("./reviews/reviews.router");
 const users_model_1 = require("./users/users.model");
 const reviews_model_1 = require("./reviews/reviews.model");
+const restaurants_router_1 = require("./restuarants/restaurants.router");
 let address;
 let server;
 const beforeAllTests = () => {
@@ -16,7 +17,8 @@ const beforeAllTests = () => {
     server = new server_1.Server();
     return server.bootstrap([
         users_router_1.usersRouter,
-        reviews_router_1.reviewsRouter
+        reviews_router_1.reviewsRouter,
+        restaurants_router_1.restaurantsRouter
     ])
         .then(() => users_model_1.User.remove({}).exec())
         .then(() => reviews_model_1.Review.remove({}).exec())

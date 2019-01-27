@@ -31,14 +31,6 @@ test('post /users', () => {
         }).catch(fail);
 });
 
-test('get /users/aaaa - not found', () => {
-    return request(address)
-        .get('/users/aaaa')
-        .then(response => {
-            expect(response.status).toBe(404);
-        }).catch(fail);
-});
-
 test('patch /users/:id', () => {
     return request(address)
         .post('/users')
@@ -60,4 +52,12 @@ test('patch /users/:id', () => {
             expect(response.body.password).toBeUndefined();
         })
         .catch(fail);
+});
+
+test('get /users/aaaa - not found', () => {
+    return request(address)
+        .get('/users/aaaa')
+        .then(response => {
+            expect(response.status).toBe(404);
+        }).catch(fail);
 });

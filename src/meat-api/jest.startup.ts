@@ -6,6 +6,7 @@ import { usersRouter } from "./users/users.router";
 import { reviewsRouter } from "./reviews/reviews.router";
 import { User } from "./users/users.model";
 import { Review } from "./reviews/reviews.model";
+import { restaurantsRouter } from './restuarants/restaurants.router';
 
 let address: string;
 let server: Server;
@@ -17,7 +18,8 @@ const beforeAllTests = () => {
     server = new Server();
     return server.bootstrap([
         usersRouter,
-        reviewsRouter
+        reviewsRouter,
+        restaurantsRouter
     ])
     .then(() => User.remove({}).exec())
     .then(() => Review.remove({}).exec())
