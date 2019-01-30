@@ -1,11 +1,13 @@
 import 'jest'
 import * as request from 'supertest';
 
-let address: string = (<any>global).address;
+const address: string = (<any>global).address;
+const token: string = (<any>global).auth;
 
 test('get /restaurants', () => {
     return request(address)
         .get('/restaurants')
+        .set('Authorization', token)
         .then(response => {
             expect(response.status).toBe(200);
             expect(response.body.items).toBeInstanceOf(Array);
@@ -15,6 +17,7 @@ test('get /restaurants', () => {
 test('post /restaurants', () => {
     return request(address)
         .post('/restaurants')
+        .set('Authorization', token)
         .send({
             name: 'Restaurante do seu Zé'
         })
@@ -28,11 +31,13 @@ test('post /restaurants', () => {
 test('patch /restaurants/:id', () => {
     return request(address)
         .post('/restaurants')
+        .set('Authorization', token)
         .send({
             name: 'Restaurante do seu Zé',
         })
         .then(response => request(address)
             .patch(`/restaurants/${response.body._id}`)
+            .set('Authorization', token)
             .send({
                 name: 'Restaurante do seu Zé - patch'
             }))
@@ -47,11 +52,13 @@ test('patch /restaurants/:id', () => {
 test('put /restaurants/:id/menu', () => {
     return request(address)
         .post('/restaurants')
+        .set('Authorization', token)
         .send({
             name: 'Restaurante do seu Zé',
         })
         .then(response => request(address)
             .put(`/restaurants/${response.body._id}/menu`)
+            .set('Authorization', token)
             .send([
                 {
                     name: 'Pork Burger',
@@ -72,11 +79,14 @@ test('put /restaurants/:id/menu', () => {
 test('patch /restaurants/:aaa not found', () => {
     return request(address)
         .post('/restaurants')
+        .set('Authorization', token)
         .send({
             name: 'Restaurante do seu Zé',
         })
         .then(response => request(address)
-            .get(`/restaurants/aaa`))
+            .get(`/restaurants/aaa`)
+            .set('Authorization', token)
+        )
         .then(response => {
             expect(response.status).toBe(404);
         })
