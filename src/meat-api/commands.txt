@@ -9,3 +9,10 @@ docker exec -it <ID_OR_NAME_CONTAINER> mongo
 
 * Para criar um novo container de mongo já com rede configurada
 docker run --name mongodb --network my-rede -d -v "/var/mongo" -p 27017:27017 mongo
+
+* Comandos para usar o PM2 (Gerenciador de processos)
+pm2 start <MAIN_FILE>
+pm2 start ecosystem.config.js
+pm2 stop <NAME_PROCESS>
+pm2 delete <NAME_PROCESS>
+pm2 ls
